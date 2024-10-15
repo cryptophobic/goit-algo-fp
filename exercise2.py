@@ -1,7 +1,5 @@
 import argparse
-import time
 import turtle
-import random
 
 class Koch:
 
