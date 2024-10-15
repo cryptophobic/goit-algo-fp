@@ -1,7 +1,7 @@
 import argparse
 import turtle
 
-class Koch:
+class Pythagoras:
 
     def __init__(self, level):
         level = int(level)
@@ -57,6 +57,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("-l", "--level", help="Level of fractal. Max=12", default=8)
     args = parser.parse_args()
-    koch = Koch(level=args.level)
-    koch.show()
+    pyth = Pythagoras(level=args.level)
+    pyth.show()
 
