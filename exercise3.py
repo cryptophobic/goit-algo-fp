@@ -1,5 +1,21 @@
 import heapq
 
+edges = [
+    ("Вулиця", "Коридор", 5),
+    ("Коридор", "Комора", 1),
+    ("Коридор", "Туалет", 2),
+    ("Коридор", "Ванна", 3),
+    ("Коридор", "Кухня", 4),
+    ("Коридор", "Кабінет", 2),
+    ("Коридор", "Вітальня", 4),
+    ("Вітальня", "Спальня", 1),
+    ("Спальня", "Балкон", 1),
+    ("Балкон", "Вулиця", 20),
+    ("Вітальня", "Вулиця", 20),
+    ("Кабінет", "Вулиця", 20),
+    ("Кухня", "Вулиця", 20),
+]
+
 
 class Graph:
     def __init__(self):
@@ -41,13 +57,10 @@ class Graph:
 
 if __name__ == "__main__":
     g = Graph()
-    g.add_edge('A', 'B', 1)
-    g.add_edge('A', 'C', 4)
-    g.add_edge('B', 'C', 2)
-    g.add_edge('B', 'D', 5)
-    g.add_edge('C', 'D', 1)
+    for start, finish, weight in edges:
+        g.add_edge(start, finish, weight)
 
-    start_vertex = 'A'
+    start_vertex = 'Вулиця'
     shortest_paths = g.dijkstra(start_vertex)
 
     print("Найкоротші відстані від вершини", start_vertex, ":")

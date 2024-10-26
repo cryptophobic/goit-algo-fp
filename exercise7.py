@@ -1,5 +1,22 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from rich.console import Console
+from rich.table import Table
+
+probability_table = {
+    2: 2.78,
+    3: 5.56,
+    4: 8.33,
+    5: 11.11,
+    6: 13.89,
+    7: 16.67,
+    8: 13.89,
+    9: 11.11,
+    10: 8.33,
+    11: 5.56,
+    12: 2.78
+}
+
 
 def simulate_dice_rolls(num_rolls):
     # Ініціалізація лічильника для сум
@@ -37,9 +54,22 @@ if __name__ == "__main__":
     probabilities = simulate_dice_rolls(num_rolls)
 
     # Виведення ймовірностей
-    print("Ймовірності сум:")
+    table = Table(title="Ймовірності сум")
+    columns = ['Сума', 'Monte Carlo', 'Дані із таблиці', 'Похибка']
+
+    for column in columns:
+        table.add_column(column)
+
     for total, prob in probabilities.items():
-        print(f"Сума {total}: {prob:.4f}")
+        prob *= 100
+        error = round(abs(prob-probability_table[total]), 2)
+        prob = round(prob, 2)
+        table.add_row(str(total), f"{prob}%", f"{probability_table[total]}%", f"{error}%", style='bright_green')
+
+    console = Console()
+    console.print(table)
+
+        # print(f"Сума {total}: {prob:.4f}")
 
     # Побудова графіка ймовірностей
     plot_probabilities(probabilities)

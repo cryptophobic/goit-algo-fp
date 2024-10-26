@@ -68,8 +68,10 @@ class LinkedList:
     def print_list(self):
         current = self.head
         while current:
-            print(current.data)
+            print(current.data, end=" ")
             current = current.next
+
+        print('')
 
 
 def insertion_sort(linked_list):
@@ -164,16 +166,20 @@ llist2.insert_at_end(21)
 llist2.insert_at_end(26)
 
 # Друк зв'язного списку
-print("Зв'язний список:")
+print("Зв'язний список1:")
 llist.print_list()
+print("Зв'язний список2:")
+llist2.print_list()
+
 llist.reverse()
-print("\n")
+print("Реверсивний список1:")
 llist.print_list()
 soprted = insertion_sort(llist)
-print("\n")
+print("Відсортований список1:")
 soprted.print_list()
 soprted2 = insertion_sort(llist2)
-print("\n")
-
+print("Відсортований список2:")
+soprted2.print_list()
+print("Обʼєднані відсортовані списки:")
 result = merge_sorted_lists(soprted, soprted2)
 result.print_list()
